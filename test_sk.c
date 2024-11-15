@@ -19,7 +19,7 @@ INPUT_TYPE_2 input_args_2[TEST_NUM] = {2, 2}; // 输入变量_2
 INPUT_TYPE_3 input_args_3[TEST_NUM] = {3, 2}; // 输入变量_3
 //......可以有更多，记得改INPUT_ARGS_NUMS 和 INPUT_TYPE_*
 #if OUTPUT_TYPE_IS_NOT_VOID
-OUTPUT_TYPE expected_output[TEST_NUM] = {6, 6}; 
+OUTPUT_TYPE expected_output[TEST_NUM] = {6, 1}; 
 #endif         // 期待返回变量
 #define PRINTF_MAX_ARGS 1000                             // printf 参数最大个数
 const char *expected_printf_input[PRINTF_MAX_ARGS] = {}; // 预期printf输入
@@ -30,9 +30,9 @@ const char *expected_printf_input[PRINTF_MAX_ARGS] = {}; // 预期printf输入
     A;                          \
     printf("\033[0m") // 设置颜色，背景黄前景红
 #define right_color(A)          \
-    printf("\033[44m\033[32m"); \
+    printf("\033[42m\033[34m"); \
     A;                          \
-    printf("\033[0m")                   // 设置颜色，背景绿前景绿
+    printf("\033[0m")                   // 设置颜色，背景绿前景蓝
 int is_broken = 0;                      // 是否测试失败
 int test_count=0; //测试轮数 
 /*一些不用设置的东西*/
@@ -90,7 +90,7 @@ void myprintf(const char *format, ...)
         is_broken = 1;
     }
     else{
-        right_color(printf("Test %d:printf value passwd;\n"));
+        right_color(printf("Test %d:printf value passwd;\n",test_count));
     }
 
     myprintf_count++;
