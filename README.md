@@ -1,6 +1,6 @@
 # Simpel_C_test
 # 简易C语言函数测试框架
-[测试图片](https://github.com/user-attachments/assets/57497830-2375-4452-add8-6b97e1e14e85)
+![测试图片](https://github.com/user-attachments/assets/57497830-2375-4452-add8-6b97e1e14e85)
 
 
 ## 项目简介
