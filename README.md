@@ -30,19 +30,22 @@
 #define INPUT_TYPE_3 int
 // 可以更多....
 #define OUTPUT_TYPE int
+//函数返回值类型宏
+#define OUTPUT_TYPE_IS_NOT_VOID 1
+//如果函数不返回，定义为0，否则为1
 // 用于判断是否有 printf 调用
 INPUT_TYPE_1 input_args_1[TEST_NUM] = {1, 2}; // 输入变量_1
 INPUT_TYPE_2 input_args_2[TEST_NUM] = {2, 2}; // 输入变量_2
 INPUT_TYPE_3 input_args_3[TEST_NUM] = {3, 2}; // 输入变量_3
 //......可以有更多，记得改INPUT_ARGS_NUMS 和 INPUT_TYPE_*
-#if defined(OUTPUT_TYPE) &&OUTPUT_TYPE!=void
-OUTPUT_TYPE expected_output[TEST_NUM] = {6, 1}; 
+#if OUTPUT_TYPE_IS_NOT_VOID
+OUTPUT_TYPE expected_output[TEST_NUM] = {6, 6}; 
 #endif         // 期待返回变量
 #define PRINTF_MAX_ARGS 1000                             // printf 参数最大个数
 const char *expected_printf_input[PRINTF_MAX_ARGS] = {}; // 预期printf输入
 ```
 需注意：输入变量小于3时，只需要按需更改INPUT_TYPE和input_args;若无输入则无须更改.<br>
-同理，如果是void函数，无须更改expected_output,但是需要将OUTPUT_TYPE改为void<br>
+同理，如果是void函数，无须更改expected_output,但是需要将OUTPUT_TYPE改为void,并设置OUTPUT_TYPE_IS_NOT_VOID为0<br>
 最后，expected_printf_input按照测试顺序填写，例如存在3个测试，预期测试2输出“ab”,测试3输出“cd”，则这样填：
 ```c
 const char *expected_printf_input[PRINTF_MAX_ARGS] = {"ab","cd"}; // 预期printf输入
